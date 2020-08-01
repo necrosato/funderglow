@@ -3,6 +3,7 @@
 Open source, DIY, customizable underglow system.
 
 ## Parts List
+1 x Wemos D1 Mini (or other esp8266 dev board)
 3 x NPN 2222 Transistor
 3 x PNP 3906 Transistor
 6 x 1k Ohm resistor
