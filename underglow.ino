@@ -9,6 +9,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include "RgbLed.h"
+#include "SetHtml.h"
 
 const char AP_NAME[] = "underglow";
 const char WiFiAPPSK[] = "underglow";
@@ -73,20 +74,12 @@ void handleSetColors()
     }
   }
 
-  server.send(200, "text/plain", message);
+  //server.send(200, "text/plain", message);
+  server.send(200, "text/html", setHtml);
   Serial.println(message);
 }
 
-void setup()
-{
-  initHardware();
-  setupWiFi();
-  leds.emplace_back(D5, D6, D7);
-  server.on("/set", handleSetColors);
-  server.begin();
-}
-
-void testLed()
+void handleTestLeds()
 {
   for (auto led : leds)
   {
@@ -105,6 +98,16 @@ void testLed()
     led.on();
     delay(1000);
   }
+}
+
+void setup()
+{
+  initHardware();
+  setupWiFi();
+  leds.emplace_back(D5, D6, D7);
+  server.on("/set", handleSetColors);
+  server.on("/test", handleTestLeds);
+  server.begin();
 }
 
 void loop()
