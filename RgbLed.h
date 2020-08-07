@@ -79,6 +79,20 @@ struct RgbLed
     }
   }
 
+  template <class T>
+  void ramp(std::vector<int> pins, int start, int end, int freq, T callback)
+  {
+    for (int i = start; i != end; (start < end) ? ++i : --i)
+    {
+      for (auto pin : pins)
+      {
+        analogWrite(pin, i);
+      }
+      callback();
+      delay(freq);
+    }
+  }
+
   std::vector<int> pins_;
 };
 

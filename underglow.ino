@@ -83,8 +83,9 @@ void testLeds()
     led.ramp(pin, PWMRANGE, 0, 2, handleClient);
     delay(100);
   }
-  led.on();
+  led.ramp(led.pins(), 0, PWMRANGE, 2, handleClient);
   delay(1000);
+  led.off();
 }
 
 void handleTestLeds()
@@ -102,15 +103,10 @@ void waveLeds()
   led.ramp(led.bPin(), 0, PWMRANGE, 2, handleClient);
   led.ramp(led.gPin(), PWMRANGE, 0, 2, handleClient);
   led.ramp(led.rPin(), 0, PWMRANGE, 2, handleClient);
+  led.ramp(led.gPin(), 0, PWMRANGE, 2, handleClient);
   led.ramp(led.bPin(), PWMRANGE, 0, 2, handleClient);
-  for (auto pin : led.pins())
-  {
-    led.ramp(pin, 0, PWMRANGE, 2, handleClient);
-  }
-  for (auto it = led.pins().rbegin(); it != led.pins().rend(); ++it )
-  {
-    led.ramp(*it, PWMRANGE, 0, 2, handleClient);
-  }
+  led.ramp(led.gPin(), PWMRANGE, 0, 2, handleClient);
+  led.ramp(led.rPin(), PWMRANGE, 0, 2, handleClient);
 }
 
 void handleWaveLeds()
