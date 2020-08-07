@@ -11,7 +11,7 @@
 
 struct RgbLed
 {
-  RgbLed(int rPin, int gPin, int bPin) : pins_({rPin, gPin, bPin})
+  RgbLed(const int& rPin, const int& gPin, const int& bPin) : pins_({rPin, gPin, bPin})
   {
     pinMode(this->rPin(), OUTPUT);
     pinMode(this->gPin(), OUTPUT);
@@ -66,6 +66,17 @@ struct RgbLed
   const std::vector<int> & pins() const
   {
     return pins_;
+  }
+
+  template <class T>
+  void ramp(int pin, int start, int end, int freq, T callback)
+  {
+    for (int i = start; i != end; (start < end) ? ++i : --i)
+    {
+      analogWrite(pin, i);
+      callback();
+      delay(freq);
+    }
   }
 
   std::vector<int> pins_;
