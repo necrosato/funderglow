@@ -4,7 +4,7 @@ String setHtml = "<!DOCTYPE html>\
         <title>Funderglow</title>\
     </head>\
     <body>\
-      <form>\
+      <form action=\"/set\">\
         <label for=\"red\">Red</label>\
         <input type=\"number\" id=\"red\" name=\"red\"><br>\
         <label for=\"green\">Green:</label>\
@@ -13,5 +13,9 @@ String setHtml = "<!DOCTYPE html>\
         <input type=\"number\" id=\"blue\" name=\"blue\"><br>\
         <input type=\"submit\" value=\"Set Colors\">\
       </form>\
+      <br>\
+      <button onclick=\"document.location='wave'\">Waves</button>\
+      <br>\
+      <button onclick=\"document.location='test'\">Test</button>\
     </body>\
 </html>";

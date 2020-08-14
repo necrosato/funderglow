@@ -70,9 +70,9 @@ void handleSetColors()
     led.green(gval);
   }
 
-  //server.send(200, "text/plain", message);
   server.send(200, "text/html", setHtml);
   Serial.println(message);
+  Serial.println("set");
 }
 
 void testLeds()
@@ -91,34 +91,39 @@ void testLeds()
 void handleTestLeds()
 {
   loopFunc = &testLeds;
-  server.send(200, "text/plain", "test");
+  server.send(200, "text/html", setHtml);
+  Serial.println("test");
 }
 
 void waveLeds()
 {
-  led.off();
-  led.ramp(led.rPin(), 0, PWMRANGE, 2, handleClient);
-  led.ramp(led.gPin(), 0, PWMRANGE, 2, handleClient);
-  led.ramp(led.rPin(), PWMRANGE, 0, 2, handleClient);
-  led.ramp(led.bPin(), 0, PWMRANGE, 2, handleClient);
-  led.ramp(led.gPin(), PWMRANGE, 0, 2, handleClient);
-  led.ramp(led.rPin(), 0, PWMRANGE, 2, handleClient);
-  led.ramp(led.gPin(), 0, PWMRANGE, 2, handleClient);
-  led.ramp(led.bPin(), PWMRANGE, 0, 2, handleClient);
-  led.ramp(led.gPin(), PWMRANGE, 0, 2, handleClient);
-  led.ramp(led.rPin(), PWMRANGE, 0, 2, handleClient);
+  led.red(PWMRANGE);
+  led.green(0);
+  led.blue(0);
+  delay(500);
+  int freq = 5;
+  led.ramp(led.gPin(), 0, PWMRANGE, freq, handleClient);
+  led.ramp(led.rPin(), PWMRANGE, 0, freq, handleClient);
+  led.ramp(led.bPin(), 0, PWMRANGE, freq, handleClient);
+  led.ramp(led.gPin(), PWMRANGE, 0, freq, handleClient);
+  led.ramp(led.rPin(), 0, PWMRANGE, freq, handleClient);
+  led.ramp(led.gPin(), 0, PWMRANGE, freq, handleClient);
+  led.ramp(led.bPin(), PWMRANGE, 0, freq, handleClient);
+  led.ramp(led.gPin(), PWMRANGE, 0, freq, handleClient);
 }
 
 void handleWaveLeds()
 {
   loopFunc = &waveLeds;
-  server.send(200, "text/plain", "wave");
+  server.send(200, "text/html", setHtml);
+  Serial.println("wave");
 }
 
 void setup()
 {
   initHardware();
   setupWiFi();
+  server.on("/", handleSetColors);
   server.on("/set", handleSetColors);
   server.on("/test", handleTestLeds);
   server.on("/wave", handleWaveLeds);
