@@ -81,7 +81,6 @@ void handleSetColors()
 
   server.send(200, "text/html", setHtml);
   Serial.println(message);
-  Serial.println("set");
 }
 
 void testLeds()
@@ -95,13 +94,6 @@ void testLeds()
   led.ramp(led.pins(), 0, PWMRANGE, 2, handleClient);
   delay(1000);
   led.off();
-}
-
-void handleTestLeds()
-{
-  loopFunc = &testLeds;
-  server.send(200, "text/html", setHtml);
-  Serial.println("test");
 }
 
 void waveLeds()
@@ -121,11 +113,26 @@ void waveLeds()
   led.ramp(led.gPin(), PWMRANGE, 0, freq, handleClient);
 }
 
-void handleWaveLeds()
+void smokeLeds()
 {
-  loopFunc = &waveLeds;
-  server.send(200, "text/html", setHtml);
-  Serial.println("wave");
+  led.green(0);
+  led.red(PWMRANGE);
+  led.blue(0);
+  delay(1500);
+  led.green(0);
+  led.red(0);
+  led.blue(PWMRANGE);
+  delay(1500);
+}
+
+std::function<void()> getHandler(std::function<void()> f, String msg)
+{
+  return [f, msg]()
+  {
+    loopFunc = f;
+    server.send(200, "text/html", setHtml);
+    Serial.println(msg);
+  };
 }
 
 void setup()
@@ -134,8 +141,9 @@ void setup()
   setupWiFi();
   server.on("/", handleSetColors);
   server.on("/set", handleSetColors);
-  server.on("/test", handleTestLeds);
-  server.on("/wave", handleWaveLeds);
+  server.on("/test", getHandler(&testLeds, "test"));
+  server.on("/wave", getHandler(&waveLeds, "wave"));
+  server.on("/smoke", getHandler(&smokeLeds, "smoke"));
   server.begin();
 }
 

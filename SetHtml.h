@@ -13,9 +13,8 @@ String setHtml = "<!DOCTYPE html>\
         <input type=\"number\" id=\"blue\" name=\"blue\"><br>\
         <input type=\"submit\" value=\"Set Colors\">\
       </form>\
-      <br>\
-      <button onclick=\"document.location='wave'\">Waves</button>\
-      <br>\
-      <button onclick=\"document.location='test'\">Test</button>\
+      <button onclick=\"document.location='wave'\">Waves</button><br>\
+      <button onclick=\"document.location='test'\">Test</button><br>\
+      <button onclick=\"document.location='smoke'\">Smoke</button><br>\
     </body>\
 </html>";
