@@ -38,6 +38,7 @@ These are the common anode strips I like to use, they are very cheap: https://ww
 * N x Common-Cathode 20mA RGB Led
 * N x 680 Ohm Resistor
 * N x hours of labor
+* Lots of wire
 
 ## Installation
 
