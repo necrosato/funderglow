@@ -102,7 +102,7 @@ void waveLeds()
   led.green(0);
   led.blue(0);
   delay(500);
-  int freq = 5;
+  int freq = 3;
   led.ramp(led.gPin(), 0, PWMRANGE, freq, handleClient);
   led.ramp(led.rPin(), PWMRANGE, 0, freq, handleClient);
   led.ramp(led.bPin(), 0, PWMRANGE, freq, handleClient);
@@ -118,11 +118,11 @@ void smokeLeds()
   led.green(0);
   led.red(PWMRANGE);
   led.blue(0);
-  delay(1500);
+  delay(750);
   led.green(0);
   led.red(0);
   led.blue(PWMRANGE);
-  delay(1500);
+  delay(750);
 }
 
 std::function<void()> getHandler(std::function<void()> f, String msg)
