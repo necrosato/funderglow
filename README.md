@@ -23,7 +23,7 @@ These are commone anode strips and very cheap: https://www.amazon.com/gp/product
 * 3 x NPN 2222 Transistor
 * 3 x 1k Ohm resistor
 
-![](./circuit_diagrams/led_controller_common_anode_bb.png)
+![](./circuit_diagrams/common_anode_led_controller_bb.png)
 
 ### Common Cathode Led Controller Parts
 * 1 x Wemos D1 Mini (or other esp8266 dev board)
@@ -32,7 +32,7 @@ These are commone anode strips and very cheap: https://www.amazon.com/gp/product
 * 3 x PNP 2907 Transistor
 * 6 x 1k Ohm resistor
 
-![](./circuit_diagrams/led_controller_common_cathode_bb.png)
+![](./circuit_diagrams/common_cathode_led_controller_bb.png)
 
 ### DIY Led Strips (Just buy them!)
 * N x Common-Cathode 20mA RGB Led
