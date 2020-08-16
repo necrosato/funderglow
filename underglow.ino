@@ -8,6 +8,7 @@
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
 #include "RgbLed.h"
 #include "SetHtml.h"
 
@@ -22,7 +23,11 @@ ESP8266WebServer server(80);
 
 RgbLed led(D5, D6, D7);
 
-std::function<void()> handleClient = []() { server.handleClient(); };
+std::function<void()> handleClient = []() {
+  MDNS.update();
+  server.handleClient();
+};
+
 std::function<void()> delay100 = []() { delay(100); };
 std::function<void()> loopFunc = delay100;
 
@@ -36,6 +41,10 @@ void setupWiFi()
   WiFi.softAP(AP_NAME, WiFiAPPSK, 6, 0);
   Serial.print("This AP's IP address is: ");
   Serial.println(WiFi.softAPIP());  
+  if (MDNS.begin("underglow"))
+  {
+    Serial.println("MDNS underglow started");
+  }
 }
 
 void initHardware()
@@ -132,7 +141,7 @@ void setup()
 
 void loop()
 {
-  server.handleClient();
+  handleClient();
   delay(100);
   loopFunc();
 }
