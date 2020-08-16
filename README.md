@@ -15,7 +15,7 @@ there is a single 12v pin and three color pins then that strip is common anode.
 If there is a single ground pin and three color pins then that strip is common
 cathode. You can easily test this with a multimeter if you are unsure.  
 
-These are commone anode strips and very cheap: https://www.amazon.com/gp/product/B07XXQD5PG  
+These are the common anode strips I like to use, they are very cheap: https://www.amazon.com/gp/product/B07XXQD5PG  
 
 ### Common Anode Led Controller Parts
 * 1 x Wemos D1 Mini (or other esp8266 dev board)
@@ -38,3 +38,11 @@ These are commone anode strips and very cheap: https://www.amazon.com/gp/product
 * N x Common-Cathode 20mA RGB Led
 * N x 680 Ohm Resistor
 * N x hours of labor
+
+## Installation
+
+I suggest liberal usage of zip ties and a two pin jst connector to the car battery.
+
+## Usage
+
+Once installed, connect to the `underglow` wifi with password `underglow`. Go to http://underglow.local to control your leds!
