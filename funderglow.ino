@@ -1,5 +1,5 @@
 //
-// underglow.ino
+// funderglow.ino
 // Naookie Sato
 //
 // Created by Naookie Sato on 08/01/2020
@@ -12,8 +12,8 @@
 #include "RgbLed.h"
 #include "SetHtml.h"
 
-const char AP_NAME[] = "underglow";
-const char WiFiAPPSK[] = "underglow";
+const char AP_NAME[] = "funderglow";
+const char WiFiAPPSK[] = "funderglow";
 
 int wifiStatus;
 IPAddress ip(172,16,168,1);      // this node's soft ap ip address
@@ -41,9 +41,9 @@ void setupWiFi()
   WiFi.softAP(AP_NAME, WiFiAPPSK, 6, 0);
   Serial.print("This AP's IP address is: ");
   Serial.println(WiFi.softAPIP());  
-  if (MDNS.begin("underglow"))
+  if (MDNS.begin("funderglow"))
   {
-    Serial.println("MDNS underglow started");
+    Serial.println("MDNS funderglow started");
   }
 }
 

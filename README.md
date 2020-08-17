@@ -44,4 +44,4 @@ I suggest liberal usage of zip ties and a two pin jst connector to the car batte
 
 ## Usage
 
-Once installed, connect to the `underglow` wifi with password `underglow`. Go to http://underglow.local to control your leds!
+Once installed, connect to the `funderglow` wifi with password `funderglow`. Go to http://funderglow.local to control your leds!
