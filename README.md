@@ -1,6 +1,4 @@
-# Underglow
-
-Funderglow  
+# Funderglow
   
 Open source, DIY, customizable underglow system.
 
