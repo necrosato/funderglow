@@ -19,7 +19,7 @@ These are the common anode strips I like to use, they are very cheap: https://ww
 
 * 1 x Wemos D1 Mini (or other esp8266 dev board)
 * 1 x DROK variable voltage regulator
-* 3 x NPN 2222 Transistor
+* 3 x NPN TIP120 Transistor
 * 3 x 1k Ohm resistor
 
 ![](./circuit_diagrams/common_anode_led_controller_bb.png)
